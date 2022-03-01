@@ -1,4 +1,5 @@
 import React from 'react'
+import NavBar from './components/NavBar'
 import axios from 'axios'
 
 axios.get('https://data.messari.io/api/v1/assets')
@@ -11,6 +12,7 @@ const App = () => {
 
   return (
     <>
+    <NavBar />
     </>
   )
 }
