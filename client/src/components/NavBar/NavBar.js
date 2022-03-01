@@ -27,21 +27,21 @@ const NavBar = () => {
 
   return (
     <div className={classes.root}>
-    <AppBar position="static">
-      <Toolbar>
-        <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
           <MenuIcon />
-        </IconButton>
+          </IconButton>
         <Typography variant="h6" className={classes.title}>
           CRYPT-O-Tracker
         </Typography>
-        <Button color="inherit">Forums</Button>
-        <Button color="inherit">Currencies</Button>
-        <Button color="inherit">My Favs</Button>
-        <Button color="inherit">News</Button>
-      </Toolbar>
-    </AppBar>
-  </div>
+          <Button color="inherit" href="/forums">Forums</Button>
+          <Button color="inherit" href="/currency">Currencies</Button>
+          <Button color="inherit" href="/favorites">My Favs</Button>
+          <Button color="inherit" href="/news">News</Button>
+        </Toolbar>
+      </AppBar>
+    </div>
   )
 }
 
