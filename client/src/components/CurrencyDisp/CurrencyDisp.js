@@ -1,69 +1,88 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import CurrencyListContext from '../../utils/CurrencyListContext'
-import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
-import CardContent from '@material-ui/core/CardContent';
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import Grid from '@material-ui/core/Grid'
+import BarChartIcon from '@material-ui/icons/BarChart';
+import GradeIcon from '@material-ui/icons/Grade';
 import IconButton from '@material-ui/core/IconButton'
-import Typography from '@material-ui/core/Typography';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import NumberFormat from 'react-number-format' 
+import './CurrencyDisp.css'
 
 const CurrencyDisp = _ => {
 
   const { currencyList } = useContext(CurrencyListContext)
   
-  const useStyles = makeStyles({
+  const useStyles = makeStyles((theme) => ({
     root: {
-      minWidth: 275,
+      flexGrow: 1,
     },
-    bullet: {
-      display: 'inline-block',
-      margin: '0 2px',
-      transform: 'scale(0.8)',
+    paper: {
+      padding: theme.spacing(2),
+      textAlign: 'center',
+      color: theme.palette.text.secondary,
     },
-    title: {
-      fontSize: 14,
-    },
-    pos: {
-      marginBottom: 12,
-    },
-  })
+  }))
 
   const classes = useStyles()
 
   return (
-      <>
+    <div className={classes.root}>
+      <Grid
+        container
+        spacing={3}
+        direction="row"
+        justifyContent="center"
+        alignItems="center">
         {
           currencyList.map(currency => 
-          <Card className={classes.root} variant="outlined">
-            <CardContent>
-              <Typography className={classes.title} color="textSecondary" gutterBottom>
-                {currency.name}
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                Price: {currency.metrics.market_data.price_usd}
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                All Time High: {currency.metrics.all_time_high.price}
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-                All Time Low: {currency.metrics.cycle_low.price}
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-               MCAP: {currency.metrics.marketcap.current_marketcap_usd}
-              </Typography>
-              <Typography className={classes.pos} color="textSecondary">
-               24H: {currency.metrics.market_data.percent_change_usd_last_24_hours }
-              </Typography>
-            </CardContent>
-            <CardActions>
-            <IconButton aria-label="delete">
-              <AddCircleOutlineIcon />
-            </IconButton>            
-          </CardActions>
-          </Card>)
+            <Grid item xs>
+            <Paper className={classes.paper}>
+              <h4>{currency.name}</h4>
+              <p>Price: 
+                <NumberFormat value={currency.metrics.market_data.price_usd}
+                displayType={'text'}
+                decimalScale={2}
+                thousandSeparator={true}
+                prefix={'$'} /></p>
+              <p>All Time High:
+                <NumberFormat value={currency.metrics.all_time_high.price} 
+                displayType={'text'}
+                decimalScale={2}
+                thousandSeparator={true}
+                prefix={'$'} /></p>
+              <p>All Time Low: 
+                <NumberFormat value={currency.metrics.cycle_low.price}
+                displayType={'text'}
+                decimalScale={2}
+                thousandSeparator={true}
+                prefix={'$'} />
+                </p>
+              <p>MCAP: 
+                <NumberFormat value={currency.metrics.marketcap.current_marketcap_usd}
+                displayType={'text'}
+                decimalScale={2}
+                thousandSeparator={true}
+                prefix={'$'} /></p>
+              <p>24H:
+                <NumberFormat value={currency.metrics.market_data.percent_change_usd_last_24_hours }
+                displayType={'text'}
+                decimalScale={1}
+                thousandSeparator={true}
+                prefix={'%'} />
+                </p>
+              <IconButton aria-label="chart">
+                <BarChartIcon />
+              </IconButton>  
+              <IconButton aria-label="fav">
+                <GradeIcon />
+              </IconButton>
+            </Paper>
+            </Grid>
+          )
         }
-      </>
+        </Grid>
+    </div>
   )
 }
 

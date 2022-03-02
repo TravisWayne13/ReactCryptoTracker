@@ -14,10 +14,17 @@ const [ currencyState, setCurrencyState ] = useState({
     axios.get('https://data.messari.io/api/v1/assets')
       .then(({ data }) => {
         let currencyList = data.data
-        console.log(currencyList)
         setCurrencyState({ ...currencyState, currencyList })
         })
       .catch(e => console.error(e))
+    setInterval(() => {
+      axios.get('https://data.messari.io/api/v1/assets')
+      .then(({ data }) => {
+        let currencyList = data.data
+        setCurrencyState({ ...currencyState, currencyList })
+        })
+      .catch(e => console.error(e))
+    }, 3000)
     }, [])
 
   return (
