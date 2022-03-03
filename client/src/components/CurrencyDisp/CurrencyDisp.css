@@ -1,3 +1,7 @@
 .MuiCard-root {
   display: inline-block
 }
+
+.MuiGrid-container {
+  padding-top: 10px !important
+}
