@@ -35,6 +35,8 @@ const NavBar = () => {
         <Typography variant="h6" className={classes.title}>
           CRYPT-O-Tracker
         </Typography>
+          <Button color="inherit" href="/login">Login</Button>
+          <Button color="inherit" href="/register">Sign Up</Button>
           <Button color="inherit" href="/forums">Forums</Button>
           <Button color="inherit" href="/currency">Currencies</Button>
           <Button color="inherit" href="/favorites">My Favs</Button>
