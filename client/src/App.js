@@ -1,18 +1,12 @@
 import React from 'react'
-import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import CurrencyPage from './pages/CurrencyPage'
 import FavPage from './pages/FavPage'
 import ForumPage from './pages/ForumPage'
 import LandingPage from './pages/LandingPage'
 import NewsPage from './pages/NewsPage'
-import CurrencyListContext from './utils/CurrencyListContext'
-import axios from 'axios'
-
-// axios.get('https://data.messari.io/api/v1/assets')
-//   .then(({ data }) => {
-//     console.log(data)
-//   })
-//   .catch(e => console.error(e))
+import Login from './pages/Login'
+import SignUpPage from './pages/SignUpPage'
 
   const App = () => {
 
@@ -24,7 +18,8 @@ import axios from 'axios'
               <Route exact path="/currency" element={<CurrencyPage />} />
               <Route exact path="/favorites" element={<FavPage />} />
               <Route exact path="/forums" element={<ForumPage />} />
-              <Route exact path="/news" element={<NewsPage />} />           
+              <Route exact path="/news" element={<NewsPage />} />   
+              <Route exact path="/register" element={<SignUpPage />} />        
             </Routes>
           </div>
         </Router>
