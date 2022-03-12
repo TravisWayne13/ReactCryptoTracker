@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
@@ -25,6 +25,14 @@ const NavBar = () => {
 
     const classes = useStyles()
 
+    const [ userState ] = useState({
+
+    })
+
+    userState.handleSignOut = e => {
+      sessionStorage.removeItem('userInfo')
+    }
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -35,8 +43,9 @@ const NavBar = () => {
         <Typography variant="h6" className={classes.title}>
           CRYPT-O-Tracker
         </Typography>
+          <p className="username">Username</p>
+          <Button color="inherit" href="/currency" onClick={userState.handleSignOut}>Sign Out</Button>
           <Button color="inherit" href="/login">Login</Button>
-          <Button color="inherit" href="/register">Sign Up</Button>
           <Button color="inherit" href="/forums">Forums</Button>
           <Button color="inherit" href="/currency">Currencies</Button>
           <Button color="inherit" href="/favorites">My Favs</Button>

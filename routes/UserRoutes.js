@@ -23,14 +23,13 @@ module.exports = app => {
   })
 
   // Login User
-  app.post('/login', (req, res) => {
+  app.post('/api/login', (req, res) => {
     User.authenticate()(req.body.username, req.body.password, (e, user) => {
       if(e) {
         console.error(e)
       }
 
       res.json(user ? {
-        email: user.email,
         username: user.username,
         userId: user._id,
         token: jwt.sign({ id: user._id },
@@ -57,7 +56,7 @@ module.exports = app => {
   })
 
   // Check if user is authorized
-  app.post('/authorize', passport.authenticate('jwt'), (req,res) => {
+  app.post('/api/authorize', passport.authenticate('jwt'), (req,res) => {
     res.sendStatus(200)
   })
 }

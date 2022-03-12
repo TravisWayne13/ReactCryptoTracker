@@ -5,8 +5,7 @@ import FavPage from './pages/FavPage'
 import ForumPage from './pages/ForumPage'
 import LandingPage from './pages/LandingPage'
 import NewsPage from './pages/NewsPage'
-import Login from './pages/Login'
-import SignUpPage from './pages/SignUpPage'
+import Login from './pages/LoginPage'
 
   const App = () => {
 
@@ -19,7 +18,7 @@ import SignUpPage from './pages/SignUpPage'
               <Route exact path="/favorites" element={<FavPage />} />
               <Route exact path="/forums" element={<ForumPage />} />
               <Route exact path="/news" element={<NewsPage />} />   
-              <Route exact path="/register" element={<SignUpPage />} />        
+              <Route exact path="/login" element={<Login />} />                
             </Routes>
           </div>
         </Router>
