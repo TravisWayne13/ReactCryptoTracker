@@ -1,9 +1,11 @@
 import { createContext } from 'react'
 
 const UserContext = createContext({
-  username: '',
+  usernameLogin: '',
+  passwordLogin: '',
   email: '',
-  password: '',
+  usernameSignUp: '',
+  passwordSignUp: '',
   token: '',
   handleInputChange: () => { },
   handleFormSubmit: () => { }
