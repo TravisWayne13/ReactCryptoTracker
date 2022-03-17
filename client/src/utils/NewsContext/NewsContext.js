@@ -2,7 +2,8 @@ import React, { createContext } from 'react'
 
 const NewsContext = createContext({
   news: [ ],
-  newsStory: ''
+  newsStory: '',
+  handleGetNewsPosts: () => { }
 })
 
 export default NewsContext

@@ -1,10 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Divider from '@material-ui/core/Divider';
 import Container from '@material-ui/core/Container'
+import NewsForumContext from '../../utils/NewsForumContext'
 import './ForumDisp.css'
 
 const ForumDisp = _ => {
@@ -19,10 +20,12 @@ const ForumDisp = _ => {
 
   const classes = useStyles();
 
+  const { handleGetNewsPosts } = useContext(NewsForumContext)
+
   return (
     <Container>
       <List component="nav" className={classes.root} aria-label="forumTopics">
-        <ListItem button>
+        <ListItem onClick={() => window.location.href = '/newsforum'} button >
           <ListItemText primary="News" />
         </ListItem>
         <Divider />
@@ -32,7 +35,7 @@ const ForumDisp = _ => {
         <ListItem button>
           <ListItemText primary="For beginners" />
         </ListItem>
-        <Divider light />
+        <Divider />
         <ListItem button>
           <ListItemText primary="Random" />
         </ListItem>
