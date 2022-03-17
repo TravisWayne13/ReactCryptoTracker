@@ -1,19 +1,18 @@
 import React, { useContext } from 'react'
-import CurrencyListContext from '../../utils/CurrencyListContext'
-import { makeStyles } from '@material-ui/core/styles'
-import Button from '@material-ui/core/Button'
-import Paper from '@material-ui/core/Paper'
+import FavContext from '../../utils/CurrencyListContext'
 import Grid from '@material-ui/core/Grid'
-import BarChartIcon from '@material-ui/icons/BarChart';
-import GradeIcon from '@material-ui/icons/Grade';
+import Paper from '@material-ui/core/Paper'
+import BarChartIcon from '@material-ui/icons/BarChart'
+import RemoveIcon from '@material-ui/icons/Remove'
 import IconButton from '@material-ui/core/IconButton'
 import NumberFormat from 'react-number-format' 
-import './CurrencyDisp.css'
+import { makeStyles } from '@material-ui/core/styles'
+import './FavDisp.css'
 
-const CurrencyDisp = _ => {
 
-  const { currencyList, handleFav } = useContext(CurrencyListContext)
-  
+
+const FavDisp = _ => {
+
   const useStyles = makeStyles((theme) => ({
     root: {
       flexGrow: 1,
@@ -27,6 +26,9 @@ const CurrencyDisp = _ => {
 
   const classes = useStyles()
 
+  const { favList, handleDeleteFav } = useContext(FavContext)
+  console.log(favList) 
+
   return (
     <div className={classes.root}>
       <Grid
@@ -34,39 +36,39 @@ const CurrencyDisp = _ => {
         spacing={3}
         direction="row"
         justifyContent="center"
-        alignItems="center">
+        alignItems="center">      
         {
-          currencyList.map(currency => 
+          favList.map(currency => 
             <Grid item xs>
-            <Paper className={classes.paper}>
-              <h4>{currency.name}</h4>
+            <Paper id="card" className={classes.paper}>
+              <h4>{currency.data.name}</h4>
               <p>Price: 
-                <NumberFormat value={currency.metrics.market_data.price_usd}
+                <NumberFormat value={currency.data.market_data.price_usd}
                 displayType={'text'}
                 decimalScale={2}
                 thousandSeparator={true}
                 prefix={'$'} /></p>
               <p>All Time High:
-                <NumberFormat value={currency.metrics.all_time_high.price} 
+                <NumberFormat value={currency.data.all_time_high.price} 
                 displayType={'text'}
                 decimalScale={2}
                 thousandSeparator={true}
                 prefix={'$'} /></p>
               <p>Cycle Low: 
-                <NumberFormat value={currency.metrics.cycle_low.price}
+                <NumberFormat value={currency.data.cycle_low.price}
                 displayType={'text'}
                 decimalScale={2}
                 thousandSeparator={true}
                 prefix={'$'} />
                 </p>
               <p>MCAP: 
-                <NumberFormat value={currency.metrics.marketcap.current_marketcap_usd}
+                <NumberFormat value={currency.data.marketcap.current_marketcap_usd}
                 displayType={'text'}
                 decimalScale={2}
                 thousandSeparator={true}
                 prefix={'$'} /></p>
               <p>24H:
-                <NumberFormat value={currency.metrics.market_data.percent_change_usd_last_24_hours }
+                <NumberFormat value={currency.data.market_data.percent_change_usd_last_24_hours}
                 displayType={'text'}
                 decimalScale={1}
                 thousandSeparator={true}
@@ -75,16 +77,16 @@ const CurrencyDisp = _ => {
               <IconButton aria-label="chart">
                 <BarChartIcon />
               </IconButton>
-              <IconButton id={currency.symbol} onClick={handleFav} aria-label="chart">
-                <GradeIcon />
+              <IconButton onClick={() => handleDeleteFav(currency.data.symbol)} aria-label="chart">
+                <RemoveIcon />
               </IconButton>    
             </Paper>
             </Grid>
-          )
+            )
         }
-        </Grid>
+      </Grid>
     </div>
   )
 }
 
-export default CurrencyDisp
+export default FavDisp

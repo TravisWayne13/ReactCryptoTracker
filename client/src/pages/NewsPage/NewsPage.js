@@ -2,7 +2,9 @@ import React, { useState, useEffect, useContext } from 'react'
 import NavBar from '../../components/NavBar'
 import NewsDisp from '../../components/NewsDisp'
 import axios from 'axios'
-import NewsContext from '../../utils/NewsContext';
+import NewsContext from '../../utils/NewsContext'
+import CryptoAPI from '../../utils/CryptoAPI'
+
 
 const NewsPage = _ => {
 
@@ -18,6 +20,8 @@ const NewsPage = _ => {
       })
       .catch(e => console.error(e))
   }, [])
+
+
 
   return (
     <NewsContext.Provider value={newsState}>

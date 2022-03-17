@@ -1,4 +1,4 @@
-import React,{ useContext } from 'react'
+import React, { useContext } from 'react'
 import NewsContext from '../../utils/NewsContext'
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
