@@ -33,6 +33,7 @@ const NavBar = () => {
       sessionStorage.removeItem('userInfo')
     }
 
+
   return (
     <div className={classes.root}>
       <AppBar position="static">
@@ -43,7 +44,6 @@ const NavBar = () => {
         <Typography variant="h6" className={classes.title}>
           CRYPT-O-Tracker
         </Typography>
-          <p className="username">Username</p>
           <Button color="inherit" href="/currency" onClick={userState.handleSignOut}>Sign Out</Button>
           <Button color="inherit" href="/login">Login</Button>
           <Button color="inherit" href="/forums">Forums</Button>

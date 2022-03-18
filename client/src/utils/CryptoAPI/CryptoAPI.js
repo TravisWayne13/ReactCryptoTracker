@@ -1,8 +1,13 @@
 import axios from 'axios'
 
 const CryptoAPI = {
+
+// comment routes
+  getComments: (id) => axios.get(`/api/comments/${id}`),
+  addComment: (comment) => axios.post('/api/comments', comment),
 // forum routes
-  getNewsPosts: () => (axios.get('/api/newsforum')),
+  getNewsPosts: (id) => (axios.get(`/api/forums/topic/${id}`)),
+  addForumPost: (post) => axios.post('/api/forums', post),
 // routes for favorites 
   addFav: (currency) => axios.post('/api/favorites', currency),
   getFavs: (id) => (axios.get(`/api/favorites/user/${id}`)),

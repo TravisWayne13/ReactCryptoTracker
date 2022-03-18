@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import NavBar from '../../components/NavBar'
 import ForumDisp from '../../components/ForumDisp'
-import NewsForumContext from '../../utils/NewsForumContext'
+import ForumContext from '../../utils/ForumContext'
 import CryptoAPI from '../../utils/CryptoAPI'
 
 const { getNewsPosts } = CryptoAPI
@@ -10,17 +10,13 @@ const ForumPage = _ => {
 
   const [ newsForumState, setNewsForumState ] = useState({ })
 
-  newsForumState.handleGetNewsPosts = () => {
-    getNewsPosts()
-      .then(({data}) => console.log(data))
-      .catch(e => console.error(e))
-  }
+
 
   return (
-    <NewsForumContext.Provider value={newsForumState}>
+    <ForumContext.Provider value={newsForumState}>
     <NavBar />
     <ForumDisp />
-    </NewsForumContext.Provider>
+    </ForumContext.Provider>
   )
 }
 
