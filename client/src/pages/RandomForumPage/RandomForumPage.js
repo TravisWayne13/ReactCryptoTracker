@@ -8,7 +8,7 @@ import { textAlign } from '@material-ui/system';
 
 const { getNewsPosts, addForumPost, getComments, addComment } = CryptoAPI
 
-const NewsForumPage = _ => {
+const RandomForumPage = _ => {
 
   const [ forumState, setForumState ] = useState({
     newsForumPost: [ ],
@@ -19,7 +19,7 @@ const NewsForumPage = _ => {
   })
 
   useEffect(() => {
-    getNewsPosts("news")
+    getNewsPosts("random")
     .then(({data}) => {
       let newsForumPost = data
       setForumState({ ...forumState, newsForumPost })
@@ -35,7 +35,7 @@ const NewsForumPage = _ => {
 
   forumState.handleAddPost = event => {
     event.preventDefault()
-    addForumPost({topic: "news", title: forumState.title, post: forumState.post })
+    addForumPost({topic: "random", title: forumState.title, post: forumState.post })
       .then(() => window.location.reload())
       .catch(e => console.error(e))
   }
@@ -60,11 +60,11 @@ const NewsForumPage = _ => {
   return (
     <ForumContext.Provider value={forumState}>
       <NavBar />
-      <h1 style={{ textAlign: 'center' }}>News Forum</h1>
+      <h1 style={{ textAlign: 'center' }}>Random Forum</h1>
       <ForumPostForm />
       <ForumPostDisp />
     </ForumContext.Provider>
   )
 }
 
-export default NewsForumPage
+export default RandomForumPage
