@@ -2,14 +2,8 @@
   "name": "client",
   "version": "0.1.0",
   "engines": {
-<<<<<<< HEAD
     "node": "16.13.2"
   },
-=======
-    "node": "6.13.2"
-  },
-  "proxy": "http://localhost:3001",
->>>>>>> ae8a225b9ba045d6312229b354db7dba10c75070
   "private": true,
   "dependencies": {
     "@material-ui/core": "^4.12.3",
