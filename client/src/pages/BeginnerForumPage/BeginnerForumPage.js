@@ -4,9 +4,12 @@ import NavBar from '../../components/NavBar'
 import ForumPostDisp from '../../components/ForumPostDisp'
 import ForumPostForm from '../../components/ForumPostForm'
 import CryptoAPI from '../../utils/CryptoAPI'
-import { textAlign } from '@material-ui/system';
 
-const { getNewsPosts, addForumPost, getComments, addComment } = CryptoAPI
+const { 
+  getNewsPosts, 
+  addForumPost, 
+  getComments, 
+  addComment } = CryptoAPI
 
 const BeginnerForumPage = _ => {
 
@@ -42,7 +45,7 @@ const BeginnerForumPage = _ => {
 
   forumState.handleAddComment = event => {
     event.preventDefault()
-    addComment({comment: forumState.comment, forumref: event.currentTarget.id, user: sessionStorage.getItem('userInfo').userId })
+    addComment({comment: forumState.comment, forumref: event.currentTarget.id, user: JSON.parse(sessionStorage.getItem('userInfo')).username })
       .then(() => window.location.reload())
       .catch(e => console.error(e))
   }

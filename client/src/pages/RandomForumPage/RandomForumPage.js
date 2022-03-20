@@ -42,7 +42,7 @@ const RandomForumPage = _ => {
 
   forumState.handleAddComment = event => {
     event.preventDefault()
-    addComment({comment: forumState.comment, forumref: event.currentTarget.id, user: sessionStorage.getItem('userInfo').userId })
+    addComment({comment: forumState.comment, forumref: event.currentTarget.id, user: JSON.parse(sessionStorage.getItem('userInfo')).username })
       .then(() => window.location.reload())
       .catch(e => console.error(e))
   }

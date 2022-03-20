@@ -6,9 +6,9 @@ import AccordionDetails from '@material-ui/core/AccordionDetails'
 import AccordionSummary from '@material-ui/core/AccordionSummary'
 import Typography from '@material-ui/core/Typography'
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore'
+import htmlremove from 'htmlremove'
 
 const NewsDisp = _ => {
-
 
   const { news } = useContext(NewsContext)
 
@@ -25,15 +25,16 @@ const NewsDisp = _ => {
       fontSize: theme.typography.pxToRem(15),
       color: theme.palette.text.secondary,
     },
-  }));
+  }))
 
-  const classes = useStyles();
+  const classes = useStyles()
   const [expanded, setExpanded] = React.useState(false);
 
   const handleChange = (panel) => (event, isExpanded) => {
       setExpanded(isExpanded ? panel : false);
       console.log(panel)
-  };
+  }
+
   return (
     <div className={classes.root}>
       {
@@ -43,12 +44,12 @@ const NewsDisp = _ => {
           expandIcon={<ExpandMoreIcon id={news.author.name}/>}
           aria-controls="panel1bh-content"
           id="panel1bh-header">
-          <Typography className={classes.heading}>{news.title}</Typography>
+          <div><Typography className={classes.heading}>{news.title}</Typography></div>
           <Typography className={classes.secondaryHeading}>{news.author.name}</Typography>
         </AccordionSummary>
         <AccordionDetails >
           <Typography>
-            {news.content}
+            {htmlremove(news.content)}
           </Typography>
         </AccordionDetails>
       </Accordion>)

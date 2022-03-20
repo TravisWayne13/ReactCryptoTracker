@@ -1,4 +1,14 @@
 #card {
-  width: fit-content;
-  margin: 0px
+  width: 250px;
+  margin: 0px;
+}
+
+.MuiCard-root {
+  display: inline-block;
+}
+
+@media screen and (max-width: 766px) {
+  .MuiGrid-root {
+    display: grid !important
+  }
 }

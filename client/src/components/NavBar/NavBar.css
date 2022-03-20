@@ -1,7 +1,6 @@
 .MuiTypography-root {
-  color: #880808
+  color: #5B8C5A
 }
-
 .MuiAppBar-colorPrimary {
   background-color: black !important
 }
@@ -10,3 +9,8 @@
   flex: auto
 }
 
+@media screen and (max-width: 766px) {
+  .navLink {
+    display: none !important
+  }
+}

@@ -4,7 +4,10 @@ import LogInForm from '../../components/LogInForm'
 import CryptoAPI from '../../utils/CryptoAPI'
 import UserContext from '../../utils/UserContext';
 
-const { loginUser, authorize, registerUser } = CryptoAPI
+const { 
+  loginUser, 
+  authorize, 
+  registerUser } = CryptoAPI
 
 const Login = _ => {
 
@@ -28,7 +31,6 @@ const Login = _ => {
 
   userState.handleSignUpForm = event => {
     event.preventDefault()
-    console.log(userState)
     registerUser({username: userState.usernameSignUp, email: userState.email, password: userState.passwordSignUp})
     .then(({data}) => {
       userSetState({...userState, token: data.token})
@@ -62,7 +64,7 @@ const Login = _ => {
       authorize(userState.token)
         .then(res => {
           console.log(res)
-          window.location.href = '/favorites'
+          window.location.href = '/currency'
         })
         .catch(err => {
           console.error(err)
