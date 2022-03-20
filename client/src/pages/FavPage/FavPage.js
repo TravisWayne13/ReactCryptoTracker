@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../../components/NavBar'
 import CurrencyListContext from '../../utils/CurrencyListContext'
 import CryptoAPI from '../../utils/CryptoAPI'
@@ -12,8 +12,6 @@ const FavPage = _ => {
   const [ currencyState, setCurrencyState ] = useState({
     favList: [ ]
   })
-
-  const [value, setValue] = useState('')
 
   useEffect(() => {
     getFavs(JSON.parse(sessionStorage.getItem('userInfo')).userId)
@@ -30,7 +28,7 @@ const FavPage = _ => {
             .catch(e => console.error(e))
         })
       })
-  }, [value])
+  }, [ ])
 
   currencyState.handleDeleteFav = (currency) => {
     deleteFav(currency)
@@ -40,8 +38,8 @@ const FavPage = _ => {
   
   return (
     <CurrencyListContext.Provider value={currencyState}>
-    <NavBar />
-    <FavDisp />
+      <NavBar />
+      <FavDisp />
     </CurrencyListContext.Provider>
   )
 }

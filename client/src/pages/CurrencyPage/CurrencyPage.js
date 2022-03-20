@@ -5,27 +5,31 @@ import CurrencyListContext from '../../utils/CurrencyListContext'
 import CryptoAPI from '../../utils/CryptoAPI'
 import axios from 'axios'
 
-const { addFav } = CryptoAPI
+const { addFav, getFavs } = CryptoAPI
 
 const CurrencyPage = _ => {
 
 
 const [ currencyState, setCurrencyState ] = useState({
     currencyList: [ ],
-    userInfo: sessionStorage.getItem('userInfo') || ''
+    userInfo: sessionStorage.getItem('userInfo') || '',
   })
 
 const [value, setValue] = useState('')
 
 
   useEffect(() => {
+    getFavs(JSON.parse(sessionStorage.getItem('userInfo')).userId)
+      .then(({data}) => console.log(data))
+      .catch(e => console.error(e))
+
     axios.get('https://data.messari.io/api/v1/assets')
       .then(({ data }) => {
         let currencyList = data.data
-        console.log(currencyList)
         setCurrencyState({ ...currencyState, currencyList })
         })
       .catch(e => console.error(e))
+      
     setInterval(() => {
       axios.get('https://data.messari.io/api/v1/assets')
       .then(({ data }) => {
@@ -38,11 +42,10 @@ const [value, setValue] = useState('')
 
 
     currencyState.handleFav = event=> {
-      console.log(event.currentTarget.id)
       let userInfo = JSON.parse(currencyState.userInfo)
-      console.log(userInfo.userId)
       addFav({currency: event.currentTarget.id, user: userInfo.userId})
-        .then(() => console.log('success'))
+        .then(() => {
+        })
         .catch(e => console.error(e))
     }
 

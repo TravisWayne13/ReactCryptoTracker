@@ -4,8 +4,6 @@ import ForumDisp from '../../components/ForumDisp'
 import ForumContext from '../../utils/ForumContext'
 import CryptoAPI from '../../utils/CryptoAPI'
 
-const { getNewsPosts } = CryptoAPI
-
 const ForumPage = _ => {
 
   const [ newsForumState, setNewsForumState ] = useState({ })
@@ -14,8 +12,8 @@ const ForumPage = _ => {
 
   return (
     <ForumContext.Provider value={newsForumState}>
-    <NavBar />
-    <ForumDisp />
+      <NavBar />
+      <ForumDisp />
     </ForumContext.Provider>
   )
 }

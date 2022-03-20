@@ -25,8 +25,8 @@ const NewsPage = _ => {
 
   return (
     <NewsContext.Provider value={newsState}>
-    <NavBar />
-    <NewsDisp />
+      <NavBar />
+      <NewsDisp />
     </NewsContext.Provider>
   )
 }
