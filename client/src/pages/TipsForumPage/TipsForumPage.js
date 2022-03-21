@@ -4,7 +4,6 @@ import NavBar from '../../components/NavBar'
 import ForumPostDisp from '../../components/ForumPostDisp'
 import ForumPostForm from '../../components/ForumPostForm'
 import CryptoAPI from '../../utils/CryptoAPI'
-import { textAlign } from '@material-ui/system';
 
 const { getNewsPosts, addForumPost, getComments, addComment } = CryptoAPI
 
