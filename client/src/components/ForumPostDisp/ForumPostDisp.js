@@ -48,17 +48,18 @@ const ForumPostDisp = _ => {
     <div className={classes.root}>
       {
         newsForumPost.map(post =>     
-          <Accordion  expanded={expanded === `${post.title}`} onChange={handleChange(`${post.title}`)}>
+          <Accordion key={post._id} expanded={expanded === `${post.title}`} onChange={handleChange(`${post.title}`)}>
             <AccordionSummary
               onClick={handleGetComments}
               expandIcon={<ExpandMoreIcon id={post._id}/>}
               aria-controls="panel1bh-content"
-              id={post._id}>
-          <div><Typography className={classes.heading}>{post.title}</Typography></div>
-          <Typography className={classes.secondaryHeading}>{post.createdAt}</Typography>
+              id={post._id}
+              key={post._id}>
+          <div><Typography key={post._id} className={classes.heading}>{post.title}</Typography></div>
+          <Typography key={post._id} className={classes.secondaryHeading}>{post.createdAt}</Typography>
          </AccordionSummary>
-        <AccordionDetails >
-          <Typography>
+        <AccordionDetails key={post._id} >
+          <Typography key={post._id}>
             {post.post}
           </Typography>
           {
