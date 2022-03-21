@@ -1,9 +1,8 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import NavBar from '../../components/NavBar'
 import NewsDisp from '../../components/NewsDisp'
 import axios from 'axios'
 import NewsContext from '../../utils/NewsContext'
-import CryptoAPI from '../../utils/CryptoAPI'
 
 
 const NewsPage = _ => {

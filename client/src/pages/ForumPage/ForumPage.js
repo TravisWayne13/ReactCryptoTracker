@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import NavBar from '../../components/NavBar'
 import ForumDisp from '../../components/ForumDisp'
 import ForumContext from '../../utils/ForumContext'
-import CryptoAPI from '../../utils/CryptoAPI'
 
 const ForumPage = _ => {
 

@@ -52,7 +52,7 @@ const NavBar = () => {
           break
         case 'signout':
           userState.handleSignOut()
-          window.location.href = 'currency'
+          window.location.href = '/currency'
           break
         default:
           break

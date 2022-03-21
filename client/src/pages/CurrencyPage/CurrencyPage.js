@@ -19,10 +19,6 @@ const [value, setValue] = useState('')
 
 
   useEffect(() => {
-    getFavs(JSON.parse(sessionStorage.getItem('userInfo')).userId)
-      .then(({data}) => console.log(data))
-      .catch(e => console.error(e))
-
     axios.get('https://data.messari.io/api/v1/assets')
       .then(({ data }) => {
         let currencyList = data.data
