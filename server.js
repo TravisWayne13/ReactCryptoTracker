@@ -47,6 +47,11 @@ if (process.env.NODE_ENV === 'production') {
 
 require('mongoose')
   .connect(process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI
-  : 'mongodb://localhost/cryptodb')
+  : 'mongodb://localhost/cryptodb', {
+    useCreateIndex: true,
+    useFindAndModify: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  })
   .then(() => app.listen(process.env.PORT || 3001))
   .catch(e => console.error(e))
