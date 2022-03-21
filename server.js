@@ -36,6 +36,15 @@ passport.use(new JWTStrategy({
 
 require('./routes')(app)
 
+if (process.env.NODE_ENV === 'production') {
+  // Serve any static files
+  app.use(express.static(join(__dirname, 'client/build')))
+  // Handle React routing, return all requests to React app
+  app.get('*', (request, response) => {
+    response.sendFile(join(__dirname, 'client/build', 'index.html'))
+  })
+}
+
 require('mongoose')
   .connect(process.env.NODE_ENV === 'production' ? process.env.MONGODB_URI
   : 'mongodb://localhost/cryptodb')
