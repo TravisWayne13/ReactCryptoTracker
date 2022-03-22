@@ -14,3 +14,8 @@ Built with:
 
 Developers:
 Travis W Houston
+
+Heroku deplyment commands:
+heroku buildpacks:set heroku/nodejs
+
+git push heroku main
